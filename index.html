@@ -8,28 +8,42 @@
     <style>
       body{
         background-color:rgb(151, 221, 238);
+        overflow: hidden;
       }
         #shape{
             width:100px;
             height:100px;
-            background-color:darkolivegreen;
+            z-index: -1;
+            background:rebeccapurple;
             display: none;
-            border-radius: 40px;
+            content:'';
+            transform: scale(-0.01);
+            transition: none;
+            border-radius: 59px;
             border: 5px solid black;
-            position: relative;
+            position: absolute  ;
+            background-image:radial-gradient(transparent, transparent, transparent, #862006a1);  
+            animation: rotate_border 1s cubic-bezier(0.0001, 0.0001, 0.0001, 0.0001) infinite;
             
         }
+        @keyframes rotate_border{
+    100%{
+        transform: rotate(360deg);
+        transform-style: preserve-3d;
+        transform-box: stroke-box;
+    }}
         p{
           color: black;
           text-align: center;
           font-size: 1.1rem;
           font-family: sans-serif;
-          /* font-style: italic; */
-          /* font-weight: 300; */
+        }
+        #alpha{
+          z-index: -1;
         }
         #alph{
-            position: relative;  
           text-align: center;
+          position: relative;
         }
         h1{
           color: maroon;
@@ -38,16 +52,23 @@
           display: flex;
           justify-content: center;
         }
-        footer{
-          color: darkblue;
-          text-align: center;
-          font-size: 1rem;
-          margin-top: 350px;
-          font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
-        }
+        footer {
+  color: black;
+  text-align: center;
+  font-size: 1.4rem;
+  display: flex;
+  display: inline-block;
+  font-weight: bolder;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
         h3{
           color: black;
           font-family: 'Times New Roman', Times, serif;
+          font-size: 1.4rem;
 
         }
     </style>
@@ -56,7 +77,6 @@
   <h1><u>Reaction Game</u></h1>
 <div id="time">
   <p><b>Press the keys shown inside the box to score</b></p>
-  <!-- <p id="alpha"></p> -->
   <p id="score"></p>
   <p id="timer">Time left: 30s</p></div>
     <div id="shape">
@@ -65,7 +85,6 @@
     </div>
     
   <script type="text/javascript">
-   
     const letter="ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890;'[],/-=`*+";
     function getRandomColor()
     {
@@ -77,7 +96,6 @@
           }
           let timeLeft = 30;
 let score = 0;
-
 const timer = setInterval(function() {
   if (timeLeft <= 0) {
     clearInterval(timer);
@@ -103,17 +121,21 @@ const timer = setInterval(function() {
         document.getElementById("shape").style.right=right+"px";
         document.getElementById("shape").style.display="block";
         const alpha=document.getElementById("alpha");
-        const g=letter[Math.floor(Math.random()*47)];
-        const l=g.toLowerCase();
-        alpha.innerHTML=g;
+
+        let g = letter[Math.floor(Math.random()*26)];
+alpha.innerHTML = g;
 document.addEventListener("keydown", function(event) {
-  if (event.key===l){
-  score++;
-  document.getElementById("shape").style.backgroundColor=getRandomColor();
-  document.getElementById("score").innerHTML = `Score: ${score}`;
-}});
-        document.addEventListener("keydown", function(e) {
-  if (e.key==l && document.getElementById("shape").style.display!=="none") {
+  if (event.key === g || event.key===g.toLowerCase()) {
+    score++;
+    document.getElementById("shape").style.backgroundColor=getRandomColor();
+    document.getElementById("score").innerHTML = `Score: ${score}`;
+    g = letter[Math.floor(Math.random()*26)];
+    alpha.innerHTML = g;
+    appearAfterDelay();
+  }
+});
+  document.addEventListener("keydown", function(e) {
+  if ((e.key==l || e.key==g) && document.getElementById("shape").style.display!=="none") {
     document.getElementById("shape").style.display="none";
     document.getElementById("shape").style.backgroundColor=getRandomColor();
     appearAfterDelay();
@@ -125,5 +147,8 @@ document.addEventListener("keydown", function(event) {
   setTimeout(makeShapeAppear, Math.random() * 1);
 }
   </script> 
-</body>   <footer>A$H</footer>
+</body>   <footer>A$H
+  <!-- <button id="restartBtn">Restart Game</button> -->
+
+</footer>
 </html>
