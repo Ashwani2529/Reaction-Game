@@ -6,113 +6,113 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reaction Game</title>
-    <style>
-        body {
-            background-color: rgb(151, 221, 238);
-            overflow: hidden;
+   <style>
+    body {
+        background-color: rgb(151, 221, 238);
+        overflow: hidden;
+    }
+
+    #restartBtn {
+        background-color: #3ae219b9;
+        color: rgb(0, 17, 255);
+        border: none;
+        padding: 5px 5px;
+        font-weight: bolder;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        text-align: center;
+        text-decoration: solid;
+        font-size: 23px;
+        margin-top: 10px;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: pointer;
+    }
+
+    #restartBtn:hover {
+        color: black;
+        background-color: rgb(0, 17, 255);
+    }
+
+    #shape {
+        width: 100px;
+        height: 100px;
+        z-index: -1;
+        background: rebeccapurple;
+        display: none;
+        content: '';
+        transform: scale(-0.01);
+        transition: none;
+        border-radius: 59px;
+        border: 5px solid black;
+        position: absolute;
+        background-image: radial-gradient(transparent, transparent, transparent, #862006a1);
+        animation: rotate_border 1s cubic-bezier(0.0001, 0.0001, 0.0001, 0.0001) infinite;
+
+    }
+
+    @keyframes rotate_border {
+        100% {
+            transform: rotate(360deg);
+            transform-style: preserve-3d;
+            transform-box: stroke-box;
         }
+    }
 
-        #restartBtn {
-            background-color: #3ae219b9;
-            color: rgb(0, 17, 255);
-            border: none;
-            padding: 5px 5px;
-            font-weight: bolder;
-            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-            text-align: center;
-            text-decoration: solid;
-            font-size: 23px;
-            margin-top: 10px;
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            cursor: pointer;
-        }
+    h4 {
+        bottom: 3px;
+        padding: 4px 3px;
+        text-align: center;
+        position: fixed;
+        font-size: 1.3rem;
+        left: 0;
+        right: 0;
+    }
 
-        #restartBtn:hover {
-            color: black;
-            background-color: rgb(0, 17, 255);
-        }
+    p {
+        color: black;
+        text-align: center;
+        font-size: 1.1rem;
+        font-family: sans-serif;
+    }
 
-        #shape {
-            width: 100px;
-            height: 100px;
-            z-index: -1;
-            background: rebeccapurple;
-            display: none;
-            content: '';
-            transform: scale(-0.01);
-            transition: none;
-            border-radius: 59px;
-            border: 5px solid black;
-            position: absolute;
-            background-image: radial-gradient(transparent, transparent, transparent, #862006a1);
-            animation: rotate_border 1s cubic-bezier(0.0001, 0.0001, 0.0001, 0.0001) infinite;
+    #alpha {
+        z-index: -1;
+    }
 
-        }
+    #alph {
+        text-align: center;
+        position: relative;
+    }
 
-        @keyframes rotate_border {
-            100% {
-                transform: rotate(360deg);
-                transform-style: preserve-3d;
-                transform-box: stroke-box;
-            }
-        }
+    h1 {
+        color: maroon;
+        font-size: 1.5rem;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        display: flex;
+        justify-content: center;
+    }
 
-        h4 {
-            bottom: 3px;
-            padding: 4px 3px;
-            text-align: center;
-            position: fixed;
-            font-size: 1.3rem;
-            left: 0;
-            right: 0;
-        }
+    footer {
+        color: black;
+        text-align: center;
+        font-size: 1.2rem;
+        font-weight: bolder;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
 
-        p {
-            color: black;
-            text-align: center;
-            font-size: 1.1rem;
-            font-family: sans-serif;
-        }
+    h3 {
+        color: black;
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 1.4rem;
+    }
+</style>
 
-        #alpha {
-            z-index: -1;
-        }
-
-        #alph {
-            text-align: center;
-            position: relative;
-        }
-
-        h1 {
-            color: maroon;
-            font-size: 1.5rem;
-            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-            display: flex;
-            justify-content: center;
-        }
-
-        footer {
-            color: black;
-            text-align: center;
-            font-size: 1.2rem;
-            font-weight: bolder;
-            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-        }
-
-        h3 {
-            color: black;
-            font-family: 'Times New Roman', Times, serif;
-            font-size: 1.4rem;
-
-        }
-    </style>
 </head>
 
 <body>
